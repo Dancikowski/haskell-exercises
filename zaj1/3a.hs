@@ -1,0 +1,1 @@
+zadanie3a a arr = a:arr

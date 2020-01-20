@@ -1,0 +1,1 @@
+zad2 arr = last arr : (init (tail arr)) ++ [head arr]

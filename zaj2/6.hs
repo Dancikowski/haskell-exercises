@@ -1,0 +1,1 @@
+zad6 a arr = length (filter (==a) arr)

@@ -1,0 +1,1 @@
+zadanie3c a arr = arr ++ [a]

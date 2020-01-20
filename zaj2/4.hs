@@ -1,0 +1,1 @@
+zad4 arr = even (length arr)
