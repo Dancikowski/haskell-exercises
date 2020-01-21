@@ -95,10 +95,32 @@ withoutDuplicates [] = []
 withoutDuplicates (x:xs) = x : withoutDuplicates (filter (/=x) xs)
 
 numTimesFound [] _ = []
-numTimesFound (x:xs) y = [sum (map (\a -> 1) ( filter (x==) y))] ++ numTimesFound xs y
+numTimesFound (x:xs) y = [sum (map (\a -> 1) (filter (x==) y))] ++ numTimesFound xs y
 
 zad8 x = zip a (numTimesFound a x)
     where
         a = withoutDuplicates x
 
 
+-- Dla danej listy par (x,y) należy zwrócić listę tych par posortowaną wg odległości od punktu
+-- (0, 0).
+-- Np. f [(0,3),(1,1),(2,1),(1,0)] = [(1,0),(1,1),(2,1),(0,3)]
+
+zad9 arr = quickSort (zad9MakeTripleTouple arr)
+
+zad9MakeTripleTouple [] = []
+zad9MakeTripleTouple (x:xs) = (x, (\x -> sqrt((fst(x) - 0) + (snd(x) - 0))) x) : zad9MakeTripleTouple xs
+
+quickSort [] = []
+quickSort [x] = [fst(x)]
+quickSort (x:arrLeft) = smallerOnes ++ [fst(x)] ++ largerOnes
+    where smallerOnes = quickSort [ele | ele <- arrLeft, snd(ele) <= snd(x)]
+          largerOnes = quickSort [ele | ele <- arrLeft, snd(ele) > snd(x)]
+
+
+
+zad10 [] = []
+zad10 [x] = [x]
+zad10 (x:y:arrLeft) = zad10(init bubbled) ++ [last bubbled]
+    where (smaller,bigger) = if(x <= y) then (x, y) else (y, x)
+          bubbled = [smaller] ++ zad10 (bigger:arrLeft)
