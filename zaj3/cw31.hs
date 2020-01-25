@@ -83,12 +83,11 @@ treeMember tree a = a `elem` preorder tree
 
 -- Zadanie 4b
 
+treeMember' Empty _ = False
+treeMember' (Node a l r) el
+   | a == el = True
+   | otherwise = treeMember' l el  || treeMember' r el
 
---treeMember' Empty _ = False
---treeMember' (Node a l r) el
---    | a == el = True
---    | otherwise = treeMember' l 
--- https://www.codewars.com/kata/58ad317d1541651a740000c5/train/
 
 
 -- Zadanie 5 a
